@@ -1,0 +1,126 @@
+<svg width="619pt" height="175pt" viewBox="0.00 0.00 619.22 175.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 171)">
+    <title>%157</title>
+    <polygon fill="#ffffff" stroke="none" points="-4,4 -4,-171 615.218,-171 615.218,4 -4,4"/>
+    <!-- %159 -->
+    <g id="node1" class="node"><title>%159</title>
+    <polygon fill="#ff9200" stroke="black" points="54,-101 0,-101 0,-65 54,-65 54,-101"/>
+    <text text-anchor="middle" x="27" y="-79.8493" font-family="TimesNewRomanPSMT" font-size="14.00">C++</text>
+    </g>
+    <!-- %161 -->
+    <g id="node2" class="node"><title>%161</title>
+    <polygon fill="#ff9200" stroke="black" points="130.814,-103.376 90.0618,-103.376 90.0618,-62.6238 130.814,-62.6238 130.814,-103.376"/>
+    <text text-anchor="middle" x="110.438" y="-79.8493" font-family="TimesNewRomanPSMT" font-size="14.00">Java</text>
+    </g>
+    <!-- %159&#45;&gt;%161 -->
+    <g id="edge1" class="edge"><title>%161&#45;&gt;%161</title>
+    <path fill="none" stroke="black" d="M54.2158,-83C62.3892,-83 71.4595,-83 79.8473,-83"/>
+    <polygon fill="black" stroke="black" points="79.9882,-86.5001 89.9882,-83 79.9881,-79.5001 79.9882,-86.5001"/>
+    </g>
+    <!-- %165 -->
+    <g id="node3" class="node"><title>%165</title>
+    <polygon fill="#ff9200" stroke="black" points="220.876,-101 166.876,-101 166.876,-65 220.876,-65 220.876,-101"/>
+    <text text-anchor="middle" x="193.876" y="-79.8493" font-family="TimesNewRomanPSMT" font-size="14.00">VB</text>
+    </g>
+    <!-- %161&#45;&gt;%165 -->
+    <g id="edge2" class="edge"><title>%165&#45;&gt;%165</title>
+    <path fill="none" stroke="black" d="M131.152,-83C138.798,-83 147.806,-83 156.541,-83"/>
+    <polygon fill="black" stroke="black" points="156.572,-86.5001 166.572,-83 156.572,-79.5001 156.572,-86.5001"/>
+    </g>
+    <!-- %169 -->
+    <g id="node4" class="node"><title>%169</title>
+    <polygon fill="#ff9200" stroke="black" points="311.031,-101 256.824,-101 256.824,-65 311.031,-65 311.031,-101"/>
+    <text text-anchor="middle" x="283.928" y="-79.8493" font-family="TimesNewRomanPSMT" font-size="14.00">Delphi</text>
+    </g>
+    <!-- %165&#45;&gt;%169 -->
+    <g id="edge15" class="edge"><title>%169&#45;&gt;%169</title>
+    <path fill="none" stroke="black" d="M221.294,-83C229.289,-83 238.212,-83 246.731,-83"/>
+    <polygon fill="black" stroke="black" points="246.831,-86.5001 256.831,-83 246.831,-79.5001 246.831,-86.5001"/>
+    </g>
+    <!-- %173 -->
+    <g id="node5" class="node"><title>%173</title>
+    <polygon fill="#ff9200" stroke="black" points="409.969,-161 355.969,-161 355.969,-125 409.969,-125 409.969,-161"/>
+    <text text-anchor="middle" x="382.969" y="-139.849" font-family="TimesNewRomanPSMT" font-size="14.00">C#</text>
+    </g>
+    <!-- %169&#45;&gt;%173 -->
+    <g id="edge12" class="edge"><title>%173&#45;&gt;%173</title>
+    <path fill="none" stroke="black" d="M311.189,-99.2369C322.192,-106.04 335.146,-114.049 346.943,-121.343"/>
+    <polygon fill="black" stroke="black" points="345.341,-124.468 355.687,-126.75 349.023,-118.514 345.341,-124.468"/>
+    </g>
+    <!-- %181 -->
+    <g id="node7" class="node"><title>%181</title>
+    <polygon fill="#ff9200" stroke="black" points="409.969,-101 355.969,-101 355.969,-65 409.969,-65 409.969,-101"/>
+    <text text-anchor="middle" x="382.969" y="-79.8493" font-family="TimesNewRomanPSMT" font-size="14.00">Ruby</text>
+    </g>
+    <!-- %169&#45;&gt;%181 -->
+    <g id="edge16" class="edge"><title>%181&#45;&gt;%181</title>
+    <path fill="none" stroke="black" d="M311.189,-83C321.761,-83 334.133,-83 345.55,-83"/>
+    <polygon fill="black" stroke="black" points="345.687,-86.5001 355.687,-83 345.687,-79.5001 345.687,-86.5001"/>
+    </g>
+    <!-- %185 -->
+    <g id="node8" class="node"><title>%185</title>
+    <polygon fill="#ff9200" stroke="black" points="418.949,-36 346.99,-36 346.99,-0 418.949,-0 418.949,-36"/>
+    <text text-anchor="middle" x="382.969" y="-14.8493" font-family="TimesNewRomanPSMT" font-size="14.00">Javascript</text>
+    </g>
+    <!-- %169&#45;&gt;%185 -->
+    <g id="edge17" class="edge"><title>%185&#45;&gt;%185</title>
+    <path fill="none" stroke="black" d="M311.189,-65.4101C322.013,-58.1596 334.725,-49.6451 346.366,-41.8473"/>
+    <polygon fill="black" stroke="black" points="348.651,-44.53 355.011,-36.0569 344.755,-38.7141 348.651,-44.53"/>
+    </g>
+    <!-- %177 -->
+    <g id="node6" class="node"><title>%177</title>
+    <polygon fill="#00ff3f" stroke="black" points="512.706,-167 458.706,-167 458.706,-131 512.706,-131 512.706,-167"/>
+    <text text-anchor="middle" x="485.706" y="-145.849" font-family="TimesNewRomanPSMT" font-size="14.00">F#</text>
+    </g>
+    <!-- %173&#45;&gt;%177 -->
+    <g id="edge5" class="edge"><title>%177&#45;&gt;%177</title>
+    <path fill="none" stroke="black" d="M410.174,-144.561C421.833,-145.255 435.756,-146.084 448.395,-146.837"/>
+    <polygon fill="black" stroke="black" points="448.442,-150.346 458.632,-147.447 448.858,-143.359 448.442,-150.346"/>
+    </g>
+    <!-- %189 -->
+    <g id="node9" class="node"><title>%189</title>
+    <polygon fill="#00ff3f" stroke="black" stroke-dasharray="1,5" points="611.101,-167 552.569,-167 552.569,-131 611.101,-131 611.101,-167"/>
+    <text text-anchor="middle" x="581.835" y="-145.849" font-family="TimesNewRomanPSMT" font-size="14.00">Haskell</text>
+    </g>
+    <!-- %177&#45;&gt;%189 -->
+    <g id="edge8" class="edge"><title>%189&#45;&gt;%189</title>
+    <path fill="none" stroke="black" d="M512.926,-149C522.05,-149 532.485,-149 542.392,-149"/>
+    <polygon fill="black" stroke="black" points="542.447,-152.5 552.447,-149 542.447,-145.5 542.447,-152.5"/>
+    </g>
+    <!-- %193 -->
+    <g id="node10" class="node"><title>%193</title>
+    <polygon fill="#00ff3f" stroke="black" stroke-dasharray="1,5" points="608.835,-63 554.835,-63 554.835,-27 608.835,-27 608.835,-63"/>
+    <text text-anchor="middle" x="581.835" y="-41.8493" font-family="TimesNewRomanPSMT" font-size="14.00">Elm</text>
+    </g>
+    <!-- %177&#45;&gt;%193 -->
+    <g id="edge9" class="edge"><title>%193&#45;&gt;%193</title>
+    <path fill="none" stroke="black" d="M507.535,-130.766C510.591,-127.9 513.65,-124.918 516.452,-122 532.032,-105.774 548.271,-86.3319 560.542,-71.0439"/>
+    <polygon fill="black" stroke="black" points="563.435,-73.0293 566.922,-63.0247 557.957,-68.6712 563.435,-73.0293"/>
+    </g>
+    <!-- %197 -->
+    <g id="node11" class="node"><title>%197</title>
+    <polygon fill="#00ff3f" stroke="black" stroke-dasharray="1,5" points="516.701,-113 454.71,-113 454.71,-77 516.701,-77 516.701,-113"/>
+    <text text-anchor="middle" x="485.706" y="-91.8493" font-family="TimesNewRomanPSMT" font-size="14.00">Clojure </text>
+    </g>
+    <!-- %181&#45;&gt;%197 -->
+    <g id="edge14" class="edge"><title>%197&#45;&gt;%197</title>
+    <path fill="none" stroke="black" d="M410.174,-86.1215C420.724,-87.3784 433.129,-88.856 444.758,-90.2414"/>
+    <polygon fill="black" stroke="black" points="444.369,-93.7196 454.713,-91.4271 445.197,-86.7688 444.369,-93.7196"/>
+    </g>
+    <!-- %201 -->
+    <g id="node12" class="node"><title>%201</title>
+    <polygon fill="#00ff3f" stroke="black" stroke-dasharray="1,5" points="512.706,-59 458.706,-59 458.706,-23 512.706,-23 512.706,-59"/>
+    <text text-anchor="middle" x="485.706" y="-37.8493" font-family="TimesNewRomanPSMT" font-size="14.00">Elixir</text>
+    </g>
+    <!-- %181&#45;&gt;%201 -->
+    <g id="edge11" class="edge"><title>%201&#45;&gt;%201</title>
+    <path fill="none" stroke="black" d="M410.174,-72.0746C422.066,-67.1163 436.314,-61.176 449.152,-55.8233"/>
+    <polygon fill="black" stroke="black" points="450.749,-58.9494 458.632,-51.8707 448.056,-52.4885 450.749,-58.9494"/>
+    </g>
+    <!-- %185&#45;&gt;%193 -->
+    <g id="edge13" class="edge"><title>%193&#45;&gt;%193</title>
+    <path fill="none" stroke="black" d="M419.024,-12.1744C446.003,-8.83011 484.035,-6.60203 516.452,-14 526.237,-16.2329 536.267,-20.1503 545.41,-24.4646"/>
+    <polygon fill="black" stroke="black" points="544.06,-27.7032 554.569,-29.0502 547.194,-21.4438 544.06,-27.7032"/>
+    </g>
+    </g>
+</svg>

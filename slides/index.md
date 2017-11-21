@@ -1,258 +1,315 @@
-- title : React Native with F#
-- description : Introduction to React Native with F#
-- author : Steffen Forkmann
+- title : Introduction to F#
+- description : Introduction to F#
+- author : Dave Glassborow
 - theme : night
 - transition : default
 
 ***
 
-## React Native with F#
+…you have to say to yourself:
 
-<br />
-<br />
+ _“I don’t know what I’m doing. We, as a field, don’t know what we’re doing. We don’t know what programming is, we don’t know what computing is, we don’t even know what a computer is.”_
+ 
+ And once you truly understand that, once you truly believe that – then you’re free, and you can think anything.
 
-### Modern mobile app development
+- Bret Victor, [The Future of Programming](https://www.youtube.com/watch?v=8pTEmbeENF4)
 
-<br />
-<br />
-Steffen Forkmann - [@sforkmann](http://www.twitter.com/sforkmann)
 
 ***
 
-### Modern mobile app development?
+## F# and <br> Functional Programming
 
-* UI/UX
-    * "Native mobile apps"
-    * Performance
-* Tooling
-    * Hot loading
-    * IntelliSense
-* Maintainability
-    * Easy to debug
-    * Correctness
+![](http://fsharp.org/img/logo/fsharp256.png)
 
 ---
 
-### "Native" UI
+## How I got here
 
- <img src="images/meter.png" style="background: transparent; border-style: none;"  width=300 />
+![](images/me.svg)
 
 ---
 
-### Tooling
+## Why I care
 
-<img src="images/hotloading.gif" style="background: transparent; border-style: none;"  />
+- Fun learning something new
+- Interesting technology from Microsoft
+- Usable in my day to day job
+- Makes my C# coding better
 
-*** 
+***
 
-### Model - View - Update
+## F#
 
-#### "Elm - Architecture"
+- ML (1974) / OCaml
+- Open source since 2005
+- Functional First but very pragmatic
+- Full interop with C#
 
- <img src="images/Elm.png" style="background: white;" width=700 />
+---
+
+### Send an email
+
+    open System.Net
+    open System.Net.Mail
+
+    /// Send email via office 365
+    let sendTestEmail toEmail body =
+        let user = "dave.glassborow@myemail.co.uk"
+        use msg = new MailMessage(user,toEmail)
+        msg.Subject <- "Test"
+        msg.Body <- body 
+        use client = new SmtpClient("smtp.office365.com",587)
+        client.EnableSsl <- true  
+        client.Credentials <- NetworkCredential(user,"******")
+        client.Send(msg)
+
+    sendTestEmail "dave@conceptfirst" "From Office365"
+
+---
+
+- Whitespace
+- Inference
+- Superset of C#
+
+---
+
+![](images/new_project.png)
+
+---
+
+![](images/define.png)
+
+---
+
+![](images/vscode.png)
 
 
- <small>http://danielbachler.de/2016/02/11/berlinjs-talk-about-elm.html</small>
+***
 
+## Functional programming
+
+- _I have to think less, the compiler does more for me_
+- Think _SQL Select_
+
+---
+
+_Controlling complexity is the essence of computer programming._
+
+![](images/fp.svg)
+
+---
+
+## Core values
+
+- Seperate data and processes
+- Transform into new data
+- Sane defaults
+- _Reason_ about code
+- Composiblity: Lego
+- Declarative
+- Functions: first class, making them, changing them
+
+---
+
+_There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies and the other way is to make it so complicated that there are no obvious deficiencies._
+
+---
+
+## Object Orientation
+
+- _Object oriented programming makes code understandable by encapsulating moving parts. Functional programming makes code understandable by minimizing moving parts._
+
+---
+
+## Object Orientation
+
+_The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle._
+
+- Packets of hidden state, hard to reason about
+- Things can change behind your back, especially in multi-threading
+- Model with Subclassing, but not always worth the hassle ?
+
+---
+
+
+
+---
+
+## Advantages
+
+- Manage complexity
+- Less stressful to code
+- More powerful, program at a higher level
+- Think differently, apply it to other langauges
+- Pit of success
+- REPL
 
 --- 
 
-### Model - View - Update
+## Disadvantages
 
-    // MODEL
-
-    type Model = int
-
-    type Msg =
-    | Increment
-    | Decrement
-
-    let init() : Model = 0
-
----
-
-### Model - View - Update
-
-    // VIEW
-
-    let view model dispatch =
-        div []
-            [ button [ OnClick (fun _ -> dispatch Decrement) ] [ str "-" ]
-              div [] [ str (model.ToString()) ]
-              button [ OnClick (fun _ -> dispatch Increment) ] [ str "+" ] ]
-
----
-
-### Model - View - Update
-
-    // UPDATE
-
-    let update (msg:Msg) (model:Model) =
-        match msg with
-        | Increment -> model + 1
-        | Decrement -> model - 1
-
----
-
-### Model - View - Update
-
-    // wiring things up
-
-    Program.mkSimple init update view
-    |> Program.withConsoleTrace
-    |> Program.withReact "elmish-app"
-    |> Program.run
-
----
-
-### Model - View - Update
-
-# Demo
+- More abstract
+- Mathematical naming
+- Different way of thinking
+- More thinking, less typing, which is harder
+- Rabbit hole: Haskell, Dependant types, Category Theory
 
 ***
 
-### Sub-Components
+### F# features
 
-    // MODEL
-
-    type Model = {
-        Counters : Counter.Model list
+    let simpleValue = 5
+    let upper (s:String) = s.ToUpper()
+    let fact      x      = List.reduce (fun total v -> v * total ) [1..x]
+    let factorial x      = List.reduce (*) [1..x]
+    let factorialPipe x  = [1..x] |> List.reduce (*)
+    type Person = {
+        Name: string
+        Dob: DateTime option
     }
 
-    type Msg = 
-    | Insert
-    | Remove
-    | Modify of int * Counter.Msg
-
-    let init() : Model =
-        { Counters = [] }
+[F# cheatsheet](http://dungpa.github.io/fsharp-cheatsheet/)
 
 ---
 
-### Sub-Components
-
-    // VIEW
-
-    let view model dispatch =
-        let counterDispatch i msg = dispatch (Modify (i, msg))
-
-        let counters =
-            model.Counters
-            |> List.mapi (fun i c -> Counter.view c (counterDispatch i)) 
-        
-        div [] [ 
-            yield button [ OnClick (fun _ -> dispatch Remove) ] [  str "Remove" ]
-            yield button [ OnClick (fun _ -> dispatch Insert) ] [ str "Add" ] 
-            yield! counters ]
+### Pipelining
 
 ---
 
-### Sub-Components
+### Union types
 
-    // UPDATE
-
-    let update (msg:Msg) (model:Model) =
-        match msg with
-        | Insert ->
-            { Counters = Counter.init() :: model.Counters }
-        | Remove ->
-            { Counters = 
-                match model.Counters with
-                | [] -> []
-                | x :: rest -> rest }
-        | Modify (id, counterMsg) ->
-            { Counters =
-                model.Counters
-                |> List.mapi (fun i counterModel -> 
-                    if i = id then
-                        Counter.update counterMsg counterModel
-                    else
-                        counterModel) }
+- Pattern matching
 
 ---
 
-### Sub-Components
+### Units of measure
 
-# Demo
+    [<Measure>] type m
+    [<Measure>] type sec
+    [<Measure>] type kg
+
+    let distance = 1.0<m>
+    let time = 2.0<sec>
+    let speed = 2.0<m/sec>
+    let acceleration = 2.0<m/sec^2>
+    let force = 5.0<kg m/sec^2>
+    let travel = time * speed
+
+---
+
+### Record types
+
+- Structural Comparison
+
+---
+
+### Type Providers
+
+- Databases (ORMS, querys, sprocs)
+- Regular Expressions
+- AWS S3 / Azure storage
+- WMI
+- OData
+- Hadoop
+- Slack
+- [R](http://bluemountaincapital.github.io/FSharpRProvider/)
+
+---
+
+## Poker
+
+- https://github.com/exeter-fp/poker-puzzle
 
 ***
 
-### React
+## Where to use F#
 
-* Facebook library for UI 
-* <code>state => view</code>
-* Virtual DOM
-
----
-
-### Virtual DOM - Initial
-
-<br />
-<br />
-
-
- <img src="images/onchange_vdom_initial.svg" style="background: white;" />
-
-<br />
-<br />
-
- <small>http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html</small>
+- REPL
+  - utilities
+  - machine learning
+  - exploring
+- Complex
+  - complex logic and domains
+  - async code 
+- Functional
+  - pipelines
+  - parsers
 
 ---
 
-### Virtual DOM - Change
+## Where NOT to use F#
 
-<br />
-<br />
-
-
- <img src="images/onchange_vdom_change.svg" style="background: white;" />
-
-<br />
-<br />
-
- <small>http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html</small>
-
----
-
-### Virtual DOM - Reuse
-
-<br />
-<br />
-
-
- <img src="images/onchange_immutable.svg" style="background: white;" />
-
-<br />
-<br />
-
- <small>http://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html</small>
-
-
-*** 
-
-### ReactNative
-
- <img src="images/ReactNative.png" style="background: white;" />
-
-
- <small>http://timbuckley.github.io/react-native-presentation</small>
+- Basic mvc
+- Xamarin
 
 ***
 
-### Show me the code
+## Applying FP outside of FP
+
+Applying functional thinkings to other languages
+
+---
+
+## F# -> C#
+
+- Generics
+- Nullable types
+- LINQ
+- Async/Await
+- Tuples
+- Pattern matching
+- Record types
+- Union types
+
+---
+
+- C# with static functions and dtos
+
+```csharp
+  public class Bob
+```
+---
+
+## Javascript
+
+- Fable
+- Ramda
+- Purescript
 
 *** 
 
-### TakeAways
+## Philisophy
 
-* Learn all the FP you can!
-* Simple modular design
+- Logic, Sets, Programming
+- Category theory
+- Discovered  -or- the way we think?
 
-*** 
+***
 
-### Thank you!
+## Find out more
 
-* https://github.com/fable-compiler/fable-elmish
-* https://ionide.io
-* https://facebook.github.io/react-native/
+### F#
+
+- http://fsharpforfunandprofit.com
+- http://connelhooley.uk/blog/2017/04/10/f-sharp-guide
+- http://connelhooley.uk/blog/2017/04/30/f-sharp-to-c-sharp
+- https://channel9.msdn.com/events/Build/2017/T6064
+- [F# koans](https://github.com/ChrisMarinos/FSharpKoans/)
+- [Video: F# for C# developers](https://vimeo.com/131640714)
+
+--- 
+
+## Find out more
+
+### Functional Programming
+
+- [John Carmack](http://www.altdev.co/2012/04/26/functional-programming-in-c/)
+- [Rich Hickey](https://changelog.com/posts/rich-hickeys-greatest-hits)
+- [Exeter FP Meetup](https://www.meetup.com/Exeter-Functional-Programmers/)
+- [Lambdacast podcast](https://soundcloud.com/lambda-cast)
+
+---
+
+## Thought for the day
+
+_Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live._
