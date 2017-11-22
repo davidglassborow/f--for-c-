@@ -12,7 +12,9 @@
  
  And once you truly understand that, once you truly believe that – then you’re free, and you can think anything.
 
-- Bret Victor, [The Future of Programming](https://www.youtube.com/watch?v=8pTEmbeENF4)
+<br />
+
+Bret Victor, [The Future of Programming](https://www.youtube.com/watch?v=8pTEmbeENF4)
 
 
 ***
@@ -44,10 +46,40 @@
 - Open source since 2005
 - Functional First but very pragmatic
 - Full interop with C#
+- Runs everywhere C# does + a few more
 
 ---
 
-### Send an email
+### Send an email C#
+
+```csharp
+using System.Net;
+using System.Net.Mail;
+
+public static class Emailer
+{
+  public static void SendTestEmail(string toEmail, string body)
+  {
+    var user = "dave.glassborow@myemail.co.uk";
+    using (var msg = new MailMessage(user, toEmail))
+    {
+      msg.Subject = "Test";
+      msg.Body = body;
+      using(var client = new SmtpClient("smtp.office365.com",587))
+      {
+        client.EnableSsl = true;
+        client.Credentials = new NetworkCredential(user, "****");
+        client.Send(msg);
+      }
+    }
+  }
+}
+
+Emailer.SendTestEmail( "dave@conceptfirst" "From Office365")
+```
+---
+
+### Send an email F#
 
     open System.Net
     open System.Net.Mail
@@ -60,10 +92,10 @@
         msg.Body <- body 
         use client = new SmtpClient("smtp.office365.com",587)
         client.EnableSsl <- true  
-        client.Credentials <- NetworkCredential(user,"******")
+        client.Credentials <- NetworkCredential(user,"****")
         client.Send(msg)
 
-    sendTestEmail "dave@conceptfirst" "From Office365"
+    //sendTestEmail "dave@conceptfirst" "From Office365"
 
 ---
 
@@ -131,10 +163,6 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 
 ---
 
-
-
----
-
 ## Advantages
 
 - Manage complexity
@@ -158,8 +186,9 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 
 ### F# features
 
+    open System
     let simpleValue = 5
-    let upper (s:String) = s.ToUpper()
+    let upper (s:string) = s.ToUpper()
     let fact      x      = List.reduce (fun total v -> v * total ) [1..x]
     let factorial x      = List.reduce (*) [1..x]
     let factorialPipe x  = [1..x] |> List.reduce (*)
@@ -172,13 +201,87 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 
 ---
 
-### Pipelining
+## Pipelining
+
+### C#
+
+```csharp
+public int AddOne(string x) =>
+   int.Parse(x.Trim()) + 1;
+```
+
+### F#
+
+```fsharp
+let addOne(x:string) =
+  x.Trim() |> Int32.Parse |> (+) 1
+```
 
 ---
 
 ### Union types
 
-- Pattern matching
+    type Option<'t> =
+    | None
+    | Some of 't
+
+    let getName name = match name with
+                       | None      -> "-Unknown-"
+                       | Some name -> name
+
+    let person = Some "david"
+    getName person |> printfn "%s"
+
+---
+
+### Union types
+
+    type Suit = Clubs | Spades | Hearts | Diamonds
+    type Rank = int
+
+    type Score =
+    | HighCard of Rank
+    | OnePair of Rank
+    | TwoPair of Higher:Rank * Lower:Rank
+    | ThreeOfKind of Rank
+    | Straight of High:Rank
+    | Flush
+    | FullHouse of Three:Rank * Two:Rank
+    | FourOfKind of Rank
+    | StraightFlush of High:Rank
+    | RoyalFlush
+
+    RoyalFlush > Flush
+
+---
+
+### Union types
+
+    type Royal = Ace | King | Queen | Jack 
+
+    let value hand =
+        match hand with
+        | Jack  -> 11
+        | Queen -> 12
+        | King  -> 13
+        | Ace   -> 14
+
+---
+### Union types
+
+    type PaymentType =
+    | Cash
+    | Cheque
+    | CreditCard of Number:string * CCV:string
+    | Bitcoin of key:string
+
+---
+
+### Record types
+
+    type Person = { Name: string }
+
+    { Name = "David" } = { Name = "David" }
 
 ---
 
@@ -197,12 +300,6 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 
 ---
 
-### Record types
-
-- Structural Comparison
-
----
-
 ### Type Providers
 
 - Databases (ORMS, querys, sprocs)
@@ -216,7 +313,7 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 
 ---
 
-## Poker
+## REPL
 
 - https://github.com/exeter-fp/poker-puzzle
 
@@ -266,15 +363,28 @@ Applying functional thinkings to other languages
 - C# with static functions and dtos
 
 ```csharp
-  public class Bob
+public class Person
+{
+    public string Email { get; set; }
+    public string Name {get; set; }
+}
+
+public static class Emailer
+{
+    public static void SendEmail(Person who)
+    {
+        // emailing code ...
+    }
+}
 ```
 ---
 
 ## Javascript
 
-- Fable
-- Ramda
-- Purescript
+- [Elm](http://elm-lang.org)
+- [Fable](http://fable.io)
+- [Ramda](http://ramdajs.com)
+- [Purescript](http://www.purescript.org)
 
 *** 
 
