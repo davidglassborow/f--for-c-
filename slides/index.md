@@ -388,7 +388,7 @@ public static class Emailer
 
 *** 
 
-## Philisophy
+## Philosophy
 
 - Logic, Sets, Programming
 - Category theory
