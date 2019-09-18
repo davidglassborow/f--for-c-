@@ -6,17 +6,37 @@
 
 ***
 
-## Why I learnt F#
+…you have to say to yourself:
 
-- Fun learning something new
-- Usable in my day to day job
-- Makes my C# coding better
+ _“I don’t know what I’m doing. We, as a field, don’t know what we’re doing. We don’t know what programming is, we don’t know what computing is, we don’t even know what a computer is.”_
+ 
+ And once you truly understand that, once you truly believe that – then you’re free, and you can think anything.
+
+<br />
+
+Bret Victor, [The Future of Programming](https://www.youtube.com/watch?v=8pTEmbeENF4)
+
+
+***
+
+## F# and <br> Functional Programming
+
+![](http://fsharp.org/img/logo/fsharp256.png)
 
 ---
 
 ## How I got here
 
 ![](images/me.svg)
+
+---
+
+## Why I care
+
+- Fun learning something new
+- Interesting technology from Microsoft
+- Usable in my day to day job
+- Makes my C# coding better
 
 ***
 
@@ -76,6 +96,12 @@ Emailer.SendTestEmail( "dave@conceptfirst" "From Office365")
         client.Send(msg)
 
     //sendTestEmail "dave@conceptfirst" "From Office365"
+
+---
+
+- Whitespace
+- Inference
+- Superset of C#
 
 ---
 
@@ -158,6 +184,89 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 
 ***
 
+### F# features
+
+    open System
+    let simpleValue = 5
+    let upper (s:string) = s.ToUpper()
+    let fact      x      = List.reduce (fun total v -> v * total ) [1..x]
+    let factorial x      = List.reduce (*) [1..x]
+    let factorialPipe x  = [1..x] |> List.reduce (*)
+    type Person = {
+        Name: string
+        Dob: DateTime option
+    }
+
+[F# cheatsheet](http://dungpa.github.io/fsharp-cheatsheet/)
+
+---
+
+## Pipelining
+
+### C#
+
+```csharp
+public int AddOne(string x) =>
+   int.Parse(x.Trim()) + 1;
+```
+
+### F#
+
+```fsharp
+let addOne(x:string) =
+  x.Trim() |> Int32.Parse |> (+) 1
+```
+
+---
+
+### Union types
+
+    type Option<'t> =
+    | None
+    | Some of 't
+
+    let getName name = match name with
+                       | None      -> "-Unknown-"
+                       | Some name -> name
+
+    let person = Some "david"
+    getName person |> printfn "%s"
+
+---
+
+### Union types
+
+    type Suit = Clubs | Spades | Hearts | Diamonds
+    type Rank = int
+
+    type Score =
+    | HighCard of Rank
+    | OnePair of Rank
+    | TwoPair of Higher:Rank * Lower:Rank
+    | ThreeOfKind of Rank
+    | Straight of High:Rank
+    | Flush
+    | FullHouse of Three:Rank * Two:Rank
+    | FourOfKind of Rank
+    | StraightFlush of High:Rank
+    | RoyalFlush
+
+    RoyalFlush > Flush
+
+---
+
+### Union types
+
+    type Royal = Ace | King | Queen | Jack 
+
+    let value hand =
+        match hand with
+        | Jack  -> 11
+        | Queen -> 12
+        | King  -> 13
+        | Ace   -> 14
+
+---
 ### Union types
 
     type PaymentType =
@@ -173,6 +282,34 @@ _The problem with object-oriented languages is they’ve got all this implicit e
     type Person = { Name: string }
 
     { Name = "David" } = { Name = "David" }
+
+---
+
+### Units of measure
+
+    [<Measure>] type m
+    [<Measure>] type sec
+    [<Measure>] type kg
+
+    let distance = 1.0<m>
+    let time = 2.0<sec>
+    let speed = 2.0<m/sec>
+    let acceleration = 2.0<m/sec^2>
+    let force = 5.0<kg m/sec^2>
+    let travel = time * speed
+
+---
+
+### Type Providers
+
+- Databases (ORMS, querys, sprocs)
+- Regular Expressions
+- AWS S3 / Azure storage
+- WMI
+- OData
+- Hadoop
+- Slack
+- [R](http://bluemountaincapital.github.io/FSharpRProvider/)
 
 ---
 
@@ -204,7 +341,24 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 
 ***
 
+## Applying FP outside of FP
+
+Applying functional thinkings to other languages
+
+---
+
 ## F# -> C#
+
+- Generics
+- Nullable types
+- LINQ
+- Async/Await
+- Tuples
+- Pattern matching
+- Record types
+- Union types
+
+---
 
 - C# with static functions and dtos
 
@@ -212,7 +366,7 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 public class Person
 {
     public string Email { get; set; }
-    public string Name { get; set; }
+    public string Name {get; set; }
 }
 
 public static class Emailer
@@ -223,8 +377,24 @@ public static class Emailer
     }
 }
 ```
+---
+
+## Javascript
+
+- [Elm](http://elm-lang.org)
+- [Fable](http://fable.io)
+- [Ramda](http://ramdajs.com)
+- [Purescript](http://www.purescript.org)
 
 *** 
+
+## Philosophy
+
+- Logic, Sets, Programming
+- Category theory
+- Discovered  -or- the way we think?
+
+***
 
 ## Find out more
 
@@ -236,6 +406,17 @@ public static class Emailer
 - https://channel9.msdn.com/events/Build/2017/T6064
 - [F# koans](https://github.com/ChrisMarinos/FSharpKoans/)
 - [Video: F# for C# developers](https://vimeo.com/131640714)
+
+--- 
+
+## Find out more
+
+### Functional Programming
+
+- [John Carmack](http://www.altdev.co/2012/04/26/functional-programming-in-c/)
+- [Rich Hickey](https://changelog.com/posts/rich-hickeys-greatest-hits)
+- [Exeter FP Meetup](https://www.meetup.com/Exeter-Functional-Programmers/)
+- [Lambdacast podcast](https://soundcloud.com/lambda-cast)
 
 ---
 
