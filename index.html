@@ -50,10 +50,33 @@
 <div class="tip" id="fs2">namespace System.Net</div>
 <div class="tip" id="fs3">namespace System.Net.Mail</div>
 <div class="tip" id="fs4">Multiple items<br />val string : value:&#39;T -&gt; string<br /><br />Full name: Microsoft.FSharp.Core.Operators.string<br /><br />--------------------<br />type string = System.String<br /><br />Full name: Microsoft.FSharp.Core.string</div>
+<div class="tip" id="fs5">Multiple items<br />val int : value:&#39;T -&gt; int (requires member op_Explicit)<br /><br />Full name: Microsoft.FSharp.Core.Operators.int<br /><br />--------------------<br />type int = int32<br /><br />Full name: Microsoft.FSharp.Core.int<br /><br />--------------------<br />type int&lt;&#39;Measure&gt; = int<br /><br />Full name: Microsoft.FSharp.Core.int&lt;_&gt;</div>
+<div class="tip" id="fs6">Multiple items<br />module List<br /><br />from Microsoft.FSharp.Collections<br /><br />--------------------<br />type List&lt;&#39;T&gt; =<br />&#160;&#160;| ( [] )<br />&#160;&#160;| ( :: ) of Head: &#39;T * Tail: &#39;T list<br />&#160;&#160;interface IReadOnlyCollection&lt;&#39;T&gt;<br />&#160;&#160;interface IEnumerable<br />&#160;&#160;interface IEnumerable&lt;&#39;T&gt;<br />&#160;&#160;member GetSlice : startIndex:int option * endIndex:int option -&gt; &#39;T list<br />&#160;&#160;member Head : &#39;T<br />&#160;&#160;member IsEmpty : bool<br />&#160;&#160;member Item : index:int -&gt; &#39;T with get<br />&#160;&#160;member Length : int<br />&#160;&#160;member Tail : &#39;T list<br />&#160;&#160;static member Cons : head:&#39;T * tail:&#39;T list -&gt; &#39;T list<br />&#160;&#160;static member Empty : &#39;T list<br /><br />Full name: Microsoft.FSharp.Collections.List&lt;_&gt;</div>
+<div class="tip" id="fs7">val reduce : reduction:(&#39;T -&gt; &#39;T -&gt; &#39;T) -&gt; list:&#39;T list -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Collections.List.reduce</div>
+<div class="tip" id="fs8">type &#39;T option = Option&lt;&#39;T&gt;<br /><br />Full name: Microsoft.FSharp.Core.option&lt;_&gt;</div>
+<div class="tip" id="fs9">Multiple items<br />type MeasureAttribute =<br />&#160;&#160;inherit Attribute<br />&#160;&#160;new : unit -&gt; MeasureAttribute<br /><br />Full name: Microsoft.FSharp.Core.MeasureAttribute<br /><br />--------------------<br />new : unit -&gt; MeasureAttribute</div>
 
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section >
+<section >
+<h2>Intro to fsharp</h2>
+<ul>
+<li>Who I am</li>
+<li>Quick intro and some code</li>
+<li>Slides and source code on Github</li>
+<li><strong>Please</strong> ask questions</li>
+</ul>
+</section>
+<section >
+<h2>Who I am</h2>
+<ul>
+<li>Developing for ~25 years</li>
+<li>Mostly C# / Web / SQL</li>
+<li>Some F#</li>
+</ul>
+<p><img src="images/me.svg" alt="" /></p>
+</section>
 <section >
 <h2>Why I learnt F#</h2>
 <ul>
@@ -62,21 +85,11 @@
 <li>Makes my C# coding better</li>
 </ul>
 </section>
-<section >
-<h2>How I got here</h2>
-<p><img src="images/me.svg" alt="" /></p>
-</section>
 </section>
 <section >
 <section >
-<h2>F#</h2>
-<ul>
-<li>ML (1974) / OCaml</li>
-<li>Open source since 2005</li>
-<li>Functional First but very pragmatic</li>
-<li>Full interop with C#</li>
-<li>Runs everywhere C# does + a few more</li>
-</ul>
+<h2>Code</h2>
+<p>Code here</p>
 </section>
 <section >
 <h3>Send an email C#</h3>
@@ -178,10 +191,127 @@ Emailer.SendTestEmail( <span class="s">"dave@conceptfirst"</span> <span class="s
 </section>
 <section >
 <section >
+<h2>F#</h2>
+<ul>
+<li>ML (1974) / OCaml</li>
+<li>Open source since 2005</li>
+<li>Functional First but very pragmatic</li>
+<li>Full interop with C#</li>
+<li>Runs everywhere C# does + a few more</li>
+<li>Test bed for C#</li>
+</ul>
+</section>
+<section >
+<h3>Union types</h3>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">PaymentType</span> <span class="o">=</span>
+| <span class="i">Cash</span>
+| <span class="i">Cheque</span>
+| <span class="i">CreditCard</span> <span class="k">of</span> <span class="i">Number</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 6)" onmouseover="showTip(event, 'fs4', 6)" class="i">string</span> <span class="o">*</span> <span class="i">CCV</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 7)" onmouseover="showTip(event, 'fs4', 7)" class="i">string</span>
+| <span class="i">Bitcoin</span> <span class="k">of</span> <span class="i">key</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 8)" onmouseover="showTip(event, 'fs4', 8)" class="i">string</span>
+
+<span class="k">type</span> <span class="i">CustomerID</span> <span class="o">=</span> <span class="i">CustomerID</span> <span class="k">of</span> <span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="i">int</span>
+</code></pre></td>
+</tr>
+</table>
+</section>
+<section >
+<h3>Record types</h3>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">Person</span> <span class="o">=</span> { <span class="i">Name</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 10)" onmouseover="showTip(event, 'fs4', 10)" class="i">string</span> }
+
+{ <span class="i">Name</span> <span class="o">=</span> <span class="s">&quot;David&quot;</span> } <span class="o">=</span> { <span class="i">Name</span> <span class="o">=</span> <span class="s">&quot;David&quot;</span> }
+</code></pre></td>
+</tr>
+</table>
+</section>
+<section >
+<h3>F# features</h3>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 11)" onmouseover="showTip(event, 'fs1', 11)" class="i">System</span>
+<span class="k">let</span> <span class="i">simpleValue</span> <span class="o">=</span> <span class="n">5</span>
+<span class="k">let</span> <span class="i">upper</span> (<span class="i">s</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 12)" onmouseover="showTip(event, 'fs4', 12)" class="i">string</span>) <span class="o">=</span> <span class="i">s</span><span class="o">.</span><span class="i">ToUpper</span>()
+<span class="k">let</span> <span class="i">fact</span>      <span class="i">x</span>      <span class="o">=</span> <span onmouseout="hideTip(event, 'fs6', 13)" onmouseover="showTip(event, 'fs6', 13)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 14)" onmouseover="showTip(event, 'fs7', 14)" class="i">reduce</span> (<span class="k">fun</span> <span class="i">total</span> <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">v</span> <span class="o">*</span> <span class="i">total</span> ) [<span class="n">1..</span><span class="i">x</span>]
+<span class="k">let</span> <span class="i">factorial</span> <span class="i">x</span>      <span class="o">=</span> <span onmouseout="hideTip(event, 'fs6', 15)" onmouseover="showTip(event, 'fs6', 15)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 16)" onmouseover="showTip(event, 'fs7', 16)" class="i">reduce</span> <span class="o">(*)</span> [<span class="n">1..</span><span class="i">x</span>]
+<span class="k">let</span> <span class="i">factorialPipe</span> <span class="i">x</span>  <span class="o">=</span> [<span class="n">1..</span><span class="i">x</span>] <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs6', 17)" onmouseover="showTip(event, 'fs6', 17)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 18)" onmouseover="showTip(event, 'fs7', 18)" class="i">reduce</span> <span class="o">(*)</span>
+<span class="k">type</span> <span class="i">Person</span> <span class="o">=</span> {
+    <span class="i">Name</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 19)" onmouseover="showTip(event, 'fs4', 19)" class="i">string</span>
+    <span class="i">Dob</span><span class="o">:</span> <span class="i">DateTime</span> <span onmouseout="hideTip(event, 'fs8', 20)" onmouseover="showTip(event, 'fs8', 20)" class="i">option</span>
+}
+</code></pre></td>
+</tr>
+</table>
+<p><a href="http://dungpa.github.io/fsharp-cheatsheet/">F# cheatsheet</a></p>
+</section>
+<section >
+<h2>Different Defaults</h2>
+<ul>
+<li>Null vs no nulls</li>
+<li>Mutable vs Immutable</li>
+<li>Change properties vs Pipelines (e.g. Linq)</li>
+<li>Reference vs Structual Equality</li>
+</ul>
+</section>
+<section >
+<h2>Extras beyond C#</h2>
+<ul>
+<li>Agents</li>
+<li>Type Providers</li>
+<li>Monads e.g. async/await</li>
+<li>Units of Measure</li>
+</ul>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">[&lt;<span onmouseout="hideTip(event, 'fs9', 21)" onmouseover="showTip(event, 'fs9', 21)" class="i">Measure</span>&gt;] <span class="k">type</span> <span class="i">m</span>
+[&lt;<span onmouseout="hideTip(event, 'fs9', 22)" onmouseover="showTip(event, 'fs9', 22)" class="i">Measure</span>&gt;] <span class="k">type</span> <span class="i">sec</span>
+[&lt;<span onmouseout="hideTip(event, 'fs9', 23)" onmouseover="showTip(event, 'fs9', 23)" class="i">Measure</span>&gt;] <span class="k">type</span> <span class="i">kg</span>
+
+<span class="k">let</span> <span class="i">distance</span> <span class="o">=</span> <span class="n">1.0</span><span class="o">&lt;</span><span class="i">m</span><span class="o">&gt;</span>
+<span class="k">let</span> <span class="i">time</span> <span class="o">=</span> <span class="n">2.0</span><span class="o">&lt;</span><span class="i">sec</span><span class="o">&gt;</span>
+<span class="k">let</span> <span class="i">speed</span> <span class="o">=</span> <span class="n">2.0</span><span class="o">&lt;</span><span class="i">m</span><span class="o">/</span><span class="i">sec</span><span class="o">&gt;</span>
+<span class="k">let</span> <span class="i">acceleration</span> <span class="o">=</span> <span class="n">2.0</span><span class="o">&lt;</span><span class="i">m</span><span class="o">/</span><span class="i">sec</span><span class="o">^</span><span class="n">2</span><span class="o">&gt;</span>
+<span class="k">let</span> <span class="i">force</span> <span class="o">=</span> <span class="n">5.0</span><span class="o">&lt;</span><span class="i">kg</span> <span class="i">m</span><span class="o">/</span><span class="i">sec</span><span class="o">^</span><span class="n">2</span><span class="o">&gt;</span>
+<span class="k">let</span> <span class="i">travel</span> <span class="o">=</span> <span class="i">time</span> <span class="o">*</span> <span class="i">speed</span>
+</code></pre></td>
+</tr>
+</table>
+</section>
+</section>
+<section >
+<section >
 <h2>Functional programming</h2>
 <ul>
 <li><em>I have to think less, the compiler does more for me</em></li>
-<li>Think <em>SQL Select</em></li>
+<li>Seperate Data and Logic e.g. <em>SQL Select</em></li>
 </ul>
 </section>
 <section >
@@ -219,7 +349,7 @@ Emailer.SendTestEmail( <span class="s">"dave@conceptfirst"</span> <span class="s
 </ul>
 </section>
 <section >
-<h2>Advantages</h2>
+<h2>FP Advantages</h2>
 <ul>
 <li>Manage complexity</li>
 <li>Less stressful to code</li>
@@ -230,51 +360,14 @@ Emailer.SendTestEmail( <span class="s">"dave@conceptfirst"</span> <span class="s
 </ul>
 </section>
 <section >
-<h2>Disadvantages</h2>
+<h2>FP Disadvantages</h2>
 <ul>
 <li>More abstract</li>
 <li>Mathematical naming</li>
 <li>Different way of thinking</li>
 <li>More thinking, less typing, which is harder</li>
 <li>Rabbit hole: Haskell, Dependant types, Category Theory</li>
-</ul>
-</section>
-</section>
-<section >
-<section >
-<h3>Union types</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
-<span class="l">4: </span>
-<span class="l">5: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">PaymentType</span> <span class="o">=</span>
-| <span class="i">Cash</span>
-| <span class="i">Cheque</span>
-| <span class="i">CreditCard</span> <span class="k">of</span> <span class="i">Number</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 6)" onmouseover="showTip(event, 'fs4', 6)" class="i">string</span> <span class="o">*</span> <span class="i">CCV</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 7)" onmouseover="showTip(event, 'fs4', 7)" class="i">string</span>
-| <span class="i">Bitcoin</span> <span class="k">of</span> <span class="i">key</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 8)" onmouseover="showTip(event, 'fs4', 8)" class="i">string</span>
-</code></pre></td>
-</tr>
-</table>
-</section>
-<section >
-<h3>Record types</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">Person</span> <span class="o">=</span> { <span class="i">Name</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 9)" onmouseover="showTip(event, 'fs4', 9)" class="i">string</span> }
-
-{ <span class="i">Name</span> <span class="o">=</span> <span class="s">&quot;David&quot;</span> } <span class="o">=</span> { <span class="i">Name</span> <span class="o">=</span> <span class="s">&quot;David&quot;</span> }
-</code></pre></td>
-</tr>
-</table>
-</section>
-<section >
-<h2>REPL</h2>
-<ul>
-<li><a href="https://github.com/exeter-fp/poker-puzzle">https://github.com/exeter-fp/poker-puzzle</a></li>
+<li>Size of community is smaller</li>
 </ul>
 </section>
 </section>
@@ -310,7 +403,7 @@ Functional
 <h2>Where NOT to use F#</h2>
 <ul>
 <li>Basic mvc</li>
-<li>Xamarin</li>
+<li>Xamarin (except Fabulous)</li>
 </ul>
 </section>
 </section>
@@ -351,7 +444,6 @@ Functional
 <section >
 <section >
 <h2>Find out more</h2>
-<h3>F#</h3>
 <ul>
 <li><a href="http://fsharpforfunandprofit.com">http://fsharpforfunandprofit.com</a></li>
 <li><a href="http://connelhooley.uk/blog/2017/04/10/f-sharp-guide">http://connelhooley.uk/blog/2017/04/10/f-sharp-guide</a></li>
