@@ -50,42 +50,21 @@
 <div class="tip" id="fs2">namespace System.Net</div>
 <div class="tip" id="fs3">namespace System.Net.Mail</div>
 <div class="tip" id="fs4">Multiple items<br />val string : value:&#39;T -&gt; string<br /><br />Full name: Microsoft.FSharp.Core.Operators.string<br /><br />--------------------<br />type string = System.String<br /><br />Full name: Microsoft.FSharp.Core.string</div>
-<div class="tip" id="fs5">Multiple items<br />module List<br /><br />from Microsoft.FSharp.Collections<br /><br />--------------------<br />type List&lt;&#39;T&gt; =<br />&#160;&#160;| ( [] )<br />&#160;&#160;| ( :: ) of Head: &#39;T * Tail: &#39;T list<br />&#160;&#160;interface IEnumerable<br />&#160;&#160;interface IEnumerable&lt;&#39;T&gt;<br />&#160;&#160;member GetSlice : startIndex:int option * endIndex:int option -&gt; &#39;T list<br />&#160;&#160;member Head : &#39;T<br />&#160;&#160;member IsEmpty : bool<br />&#160;&#160;member Item : index:int -&gt; &#39;T with get<br />&#160;&#160;member Length : int<br />&#160;&#160;member Tail : &#39;T list<br />&#160;&#160;static member Cons : head:&#39;T * tail:&#39;T list -&gt; &#39;T list<br />&#160;&#160;static member Empty : &#39;T list<br /><br />Full name: Microsoft.FSharp.Collections.List&lt;_&gt;</div>
-<div class="tip" id="fs6">val reduce : reduction:(&#39;T -&gt; &#39;T -&gt; &#39;T) -&gt; list:&#39;T list -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Collections.List.reduce</div>
-<div class="tip" id="fs7">type &#39;T option = Option&lt;&#39;T&gt;<br /><br />Full name: Microsoft.FSharp.Core.option&lt;_&gt;</div>
-<div class="tip" id="fs8">module Option<br /><br />from Microsoft.FSharp.Core</div>
-<div class="tip" id="fs9">union case Option.None: Option&lt;&#39;T&gt;</div>
-<div class="tip" id="fs10">union case Option.Some: Value: &#39;T -&gt; Option&lt;&#39;T&gt;</div>
-<div class="tip" id="fs11">val printfn : format:Printf.TextWriterFormat&lt;&#39;T&gt; -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.printfn</div>
-<div class="tip" id="fs12">Multiple items<br />val int : value:&#39;T -&gt; int (requires member op_Explicit)<br /><br />Full name: Microsoft.FSharp.Core.Operators.int<br /><br />--------------------<br />type int = int32<br /><br />Full name: Microsoft.FSharp.Core.int<br /><br />--------------------<br />type int&lt;&#39;Measure&gt; = int<br /><br />Full name: Microsoft.FSharp.Core.int&lt;_&gt;</div>
-<div class="tip" id="fs13">Multiple items<br />type MeasureAttribute =<br />&#160;&#160;inherit Attribute<br />&#160;&#160;new : unit -&gt; MeasureAttribute<br /><br />Full name: Microsoft.FSharp.Core.MeasureAttribute<br /><br />--------------------<br />new : unit -&gt; MeasureAttribute</div>
 
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
             <section >
-<p>…you have to say to yourself:</p>
-<p><em>“I don’t know what I’m doing. We, as a field, don’t know what we’re doing. We don’t know what programming is, we don’t know what computing is, we don’t even know what a computer is.”</em></p>
-<p>And once you truly understand that, once you truly believe that – then you’re free, and you can think anything.</p>
-<br />
-<p>Bret Victor, <a href="https://www.youtube.com/watch?v=8pTEmbeENF4">The Future of Programming</a></p>
-</section>
 <section >
-<section >
-<h2>F# and <br> Functional Programming</h2>
-<p><img src="http://fsharp.org/img/logo/fsharp256.png" alt="" /></p>
+<h2>Why I learnt F#</h2>
+<ul>
+<li>Fun learning something new</li>
+<li>Usable in my day to day job</li>
+<li>Makes my C# coding better</li>
+</ul>
 </section>
 <section >
 <h2>How I got here</h2>
 <p><img src="images/me.svg" alt="" /></p>
-</section>
-<section >
-<h2>Why I care</h2>
-<ul>
-<li>Fun learning something new</li>
-<li>Interesting technology from Microsoft</li>
-<li>Usable in my day to day job</li>
-<li>Makes my C# coding better</li>
-</ul>
 </section>
 </section>
 <section >
@@ -188,13 +167,6 @@ Emailer.SendTestEmail( <span class="s">"dave@conceptfirst"</span> <span class="s
 </table>
 </section>
 <section >
-<ul>
-<li>Whitespace</li>
-<li>Inference</li>
-<li>Superset of C#</li>
-</ul>
-</section>
-<section >
 <p><img src="images/new_project.png" alt="" /></p>
 </section>
 <section >
@@ -270,142 +242,6 @@ Emailer.SendTestEmail( <span class="s">"dave@conceptfirst"</span> <span class="s
 </section>
 <section >
 <section >
-<h3>F# features</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
-<span class="l"> 2: </span>
-<span class="l"> 3: </span>
-<span class="l"> 4: </span>
-<span class="l"> 5: </span>
-<span class="l"> 6: </span>
-<span class="l"> 7: </span>
-<span class="l"> 8: </span>
-<span class="l"> 9: </span>
-<span class="l">10: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 6)" onmouseover="showTip(event, 'fs1', 6)" class="i">System</span>
-<span class="k">let</span> <span class="i">simpleValue</span> <span class="o">=</span> <span class="n">5</span>
-<span class="k">let</span> <span class="i">upper</span> (<span class="i">s</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 7)" onmouseover="showTip(event, 'fs4', 7)" class="i">string</span>) <span class="o">=</span> <span class="i">s</span><span class="o">.</span><span class="i">ToUpper</span>()
-<span class="k">let</span> <span class="i">fact</span>      <span class="i">x</span>      <span class="o">=</span> <span onmouseout="hideTip(event, 'fs5', 8)" onmouseover="showTip(event, 'fs5', 8)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs6', 9)" onmouseover="showTip(event, 'fs6', 9)" class="i">reduce</span> (<span class="k">fun</span> <span class="i">total</span> <span class="i">v</span> <span class="k">-&gt;</span> <span class="i">v</span> <span class="o">*</span> <span class="i">total</span> ) [<span class="n">1..</span><span class="i">x</span>]
-<span class="k">let</span> <span class="i">factorial</span> <span class="i">x</span>      <span class="o">=</span> <span onmouseout="hideTip(event, 'fs5', 10)" onmouseover="showTip(event, 'fs5', 10)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs6', 11)" onmouseover="showTip(event, 'fs6', 11)" class="i">reduce</span> <span class="o">(*)</span> [<span class="n">1..</span><span class="i">x</span>]
-<span class="k">let</span> <span class="i">factorialPipe</span> <span class="i">x</span>  <span class="o">=</span> [<span class="n">1..</span><span class="i">x</span>] <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs5', 12)" onmouseover="showTip(event, 'fs5', 12)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs6', 13)" onmouseover="showTip(event, 'fs6', 13)" class="i">reduce</span> <span class="o">(*)</span>
-<span class="k">type</span> <span class="i">Person</span> <span class="o">=</span> {
-    <span class="i">Name</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 14)" onmouseover="showTip(event, 'fs4', 14)" class="i">string</span>
-    <span class="i">Dob</span><span class="o">:</span> <span class="i">DateTime</span> <span onmouseout="hideTip(event, 'fs7', 15)" onmouseover="showTip(event, 'fs7', 15)" class="i">option</span>
-}
-</code></pre></td>
-</tr>
-</table>
-<p><a href="http://dungpa.github.io/fsharp-cheatsheet/">F# cheatsheet</a></p>
-</section>
-<section >
-<h2>Pipelining</h2>
-<h3>C#</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="csharp"><span class="k">public</span> <span class="k">int</span> AddOne(<span class="k">string</span> x) <span class="o">=</span><span class="o">&gt;</span>
-   <span class="k">int</span>.Parse(x.Trim()) <span class="o">+</span> <span class="n">1</span>;
-</code></pre></td></tr></table>
-<h3>F#</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">addOne</span>(<span class="i">x</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 16)" onmouseover="showTip(event, 'fs4', 16)" class="i">string</span>) <span class="o">=</span>
-  <span class="i">x</span><span class="o">.</span><span class="i">Trim</span>() <span class="o">|&gt;</span> <span class="i">Int32</span><span class="o">.</span><span class="i">Parse</span> <span class="o">|&gt;</span> (<span class="o">+</span>) <span class="n">1</span>
-</code></pre></td>
-</tr>
-</table>
-</section>
-<section >
-<h3>Union types</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
-<span class="l"> 2: </span>
-<span class="l"> 3: </span>
-<span class="l"> 4: </span>
-<span class="l"> 5: </span>
-<span class="l"> 6: </span>
-<span class="l"> 7: </span>
-<span class="l"> 8: </span>
-<span class="l"> 9: </span>
-<span class="l">10: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span onmouseout="hideTip(event, 'fs8', 17)" onmouseover="showTip(event, 'fs8', 17)" class="i">Option</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">t</span><span class="o">&gt;</span> <span class="o">=</span>
-| <span onmouseout="hideTip(event, 'fs9', 18)" onmouseover="showTip(event, 'fs9', 18)" class="i">None</span>
-| <span onmouseout="hideTip(event, 'fs10', 19)" onmouseover="showTip(event, 'fs10', 19)" class="i">Some</span> <span class="k">of</span> <span class="o">&#39;</span><span class="i">t</span>
-
-<span class="k">let</span> <span class="i">getName</span> <span class="i">name</span> <span class="o">=</span> <span class="k">match</span> <span class="i">name</span> <span class="k">with</span>
-                   | <span onmouseout="hideTip(event, 'fs9', 20)" onmouseover="showTip(event, 'fs9', 20)" class="i">None</span>      <span class="k">-&gt;</span> <span class="s">&quot;-Unknown-&quot;</span>
-                   | <span onmouseout="hideTip(event, 'fs10', 21)" onmouseover="showTip(event, 'fs10', 21)" class="i">Some</span> <span class="i">name</span> <span class="k">-&gt;</span> <span class="i">name</span>
-
-<span class="k">let</span> <span class="i">person</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs10', 22)" onmouseover="showTip(event, 'fs10', 22)" class="i">Some</span> <span class="s">&quot;david&quot;</span>
-<span class="i">getName</span> <span class="i">person</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs11', 23)" onmouseover="showTip(event, 'fs11', 23)" class="i">printfn</span> <span class="s">&quot;%s&quot;</span>
-</code></pre></td>
-</tr>
-</table>
-</section>
-<section >
-<h3>Union types</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
-<span class="l"> 2: </span>
-<span class="l"> 3: </span>
-<span class="l"> 4: </span>
-<span class="l"> 5: </span>
-<span class="l"> 6: </span>
-<span class="l"> 7: </span>
-<span class="l"> 8: </span>
-<span class="l"> 9: </span>
-<span class="l">10: </span>
-<span class="l">11: </span>
-<span class="l">12: </span>
-<span class="l">13: </span>
-<span class="l">14: </span>
-<span class="l">15: </span>
-<span class="l">16: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">Suit</span> <span class="o">=</span> <span class="i">Clubs</span> | <span class="i">Spades</span> | <span class="i">Hearts</span> | <span class="i">Diamonds</span>
-<span class="k">type</span> <span class="i">Rank</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs12', 24)" onmouseover="showTip(event, 'fs12', 24)" class="i">int</span>
-
-<span class="k">type</span> <span class="i">Score</span> <span class="o">=</span>
-| <span class="i">HighCard</span> <span class="k">of</span> <span class="i">Rank</span>
-| <span class="i">OnePair</span> <span class="k">of</span> <span class="i">Rank</span>
-| <span class="i">TwoPair</span> <span class="k">of</span> <span class="i">Higher</span><span class="o">:</span><span class="i">Rank</span> <span class="o">*</span> <span class="i">Lower</span><span class="o">:</span><span class="i">Rank</span>
-| <span class="i">ThreeOfKind</span> <span class="k">of</span> <span class="i">Rank</span>
-| <span class="i">Straight</span> <span class="k">of</span> <span class="i">High</span><span class="o">:</span><span class="i">Rank</span>
-| <span class="i">Flush</span>
-| <span class="i">FullHouse</span> <span class="k">of</span> <span class="i">Three</span><span class="o">:</span><span class="i">Rank</span> <span class="o">*</span> <span class="i">Two</span><span class="o">:</span><span class="i">Rank</span>
-| <span class="i">FourOfKind</span> <span class="k">of</span> <span class="i">Rank</span>
-| <span class="i">StraightFlush</span> <span class="k">of</span> <span class="i">High</span><span class="o">:</span><span class="i">Rank</span>
-| <span class="i">RoyalFlush</span>
-
-<span class="i">RoyalFlush</span> <span class="o">&gt;</span> <span class="i">Flush</span>
-</code></pre></td>
-</tr>
-</table>
-</section>
-<section >
-<h3>Union types</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
-<span class="l">4: </span>
-<span class="l">5: </span>
-<span class="l">6: </span>
-<span class="l">7: </span>
-<span class="l">8: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">Royal</span> <span class="o">=</span> <span class="i">Ace</span> | <span class="i">King</span> | <span class="i">Queen</span> | <span class="i">Jack</span> 
-
-<span class="k">let</span> <span class="i">value</span> <span class="i">hand</span> <span class="o">=</span>
-    <span class="k">match</span> <span class="i">hand</span> <span class="k">with</span>
-    | <span class="i">Jack</span>  <span class="k">-&gt;</span> <span class="n">11</span>
-    | <span class="i">Queen</span> <span class="k">-&gt;</span> <span class="n">12</span>
-    | <span class="i">King</span>  <span class="k">-&gt;</span> <span class="n">13</span>
-    | <span class="i">Ace</span>   <span class="k">-&gt;</span> <span class="n">14</span>
-</code></pre></td>
-</tr>
-</table>
-</section>
-<section >
 <h3>Union types</h3>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
@@ -416,8 +252,8 @@ Emailer.SendTestEmail( <span class="s">"dave@conceptfirst"</span> <span class="s
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">PaymentType</span> <span class="o">=</span>
 | <span class="i">Cash</span>
 | <span class="i">Cheque</span>
-| <span class="i">CreditCard</span> <span class="k">of</span> <span class="i">Number</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 25)" onmouseover="showTip(event, 'fs4', 25)" class="i">string</span> <span class="o">*</span> <span class="i">CCV</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 26)" onmouseover="showTip(event, 'fs4', 26)" class="i">string</span>
-| <span class="i">Bitcoin</span> <span class="k">of</span> <span class="i">key</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 27)" onmouseover="showTip(event, 'fs4', 27)" class="i">string</span>
+| <span class="i">CreditCard</span> <span class="k">of</span> <span class="i">Number</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 6)" onmouseover="showTip(event, 'fs4', 6)" class="i">string</span> <span class="o">*</span> <span class="i">CCV</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 7)" onmouseover="showTip(event, 'fs4', 7)" class="i">string</span>
+| <span class="i">Bitcoin</span> <span class="k">of</span> <span class="i">key</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 8)" onmouseover="showTip(event, 'fs4', 8)" class="i">string</span>
 </code></pre></td>
 </tr>
 </table>
@@ -428,52 +264,12 @@ Emailer.SendTestEmail( <span class="s">"dave@conceptfirst"</span> <span class="s
 <span class="l">2: </span>
 <span class="l">3: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">Person</span> <span class="o">=</span> { <span class="i">Name</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 28)" onmouseover="showTip(event, 'fs4', 28)" class="i">string</span> }
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">Person</span> <span class="o">=</span> { <span class="i">Name</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 9)" onmouseover="showTip(event, 'fs4', 9)" class="i">string</span> }
 
 { <span class="i">Name</span> <span class="o">=</span> <span class="s">&quot;David&quot;</span> } <span class="o">=</span> { <span class="i">Name</span> <span class="o">=</span> <span class="s">&quot;David&quot;</span> }
 </code></pre></td>
 </tr>
 </table>
-</section>
-<section >
-<h3>Units of measure</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
-<span class="l"> 2: </span>
-<span class="l"> 3: </span>
-<span class="l"> 4: </span>
-<span class="l"> 5: </span>
-<span class="l"> 6: </span>
-<span class="l"> 7: </span>
-<span class="l"> 8: </span>
-<span class="l"> 9: </span>
-<span class="l">10: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">[&lt;<span onmouseout="hideTip(event, 'fs13', 29)" onmouseover="showTip(event, 'fs13', 29)" class="i">Measure</span>&gt;] <span class="k">type</span> <span class="i">m</span>
-[&lt;<span onmouseout="hideTip(event, 'fs13', 30)" onmouseover="showTip(event, 'fs13', 30)" class="i">Measure</span>&gt;] <span class="k">type</span> <span class="i">sec</span>
-[&lt;<span onmouseout="hideTip(event, 'fs13', 31)" onmouseover="showTip(event, 'fs13', 31)" class="i">Measure</span>&gt;] <span class="k">type</span> <span class="i">kg</span>
-
-<span class="k">let</span> <span class="i">distance</span> <span class="o">=</span> <span class="n">1.0</span><span class="o">&lt;</span><span class="i">m</span><span class="o">&gt;</span>
-<span class="k">let</span> <span class="i">time</span> <span class="o">=</span> <span class="n">2.0</span><span class="o">&lt;</span><span class="i">sec</span><span class="o">&gt;</span>
-<span class="k">let</span> <span class="i">speed</span> <span class="o">=</span> <span class="n">2.0</span><span class="o">&lt;</span><span class="i">m</span><span class="o">/</span><span class="i">sec</span><span class="o">&gt;</span>
-<span class="k">let</span> <span class="i">acceleration</span> <span class="o">=</span> <span class="n">2.0</span><span class="o">&lt;</span><span class="i">m</span><span class="o">/</span><span class="i">sec</span><span class="o">^</span><span class="n">2</span><span class="o">&gt;</span>
-<span class="k">let</span> <span class="i">force</span> <span class="o">=</span> <span class="n">5.0</span><span class="o">&lt;</span><span class="i">kg</span> <span class="i">m</span><span class="o">/</span><span class="i">sec</span><span class="o">^</span><span class="n">2</span><span class="o">&gt;</span>
-<span class="k">let</span> <span class="i">travel</span> <span class="o">=</span> <span class="i">time</span> <span class="o">*</span> <span class="i">speed</span>
-</code></pre></td>
-</tr>
-</table>
-</section>
-<section >
-<h3>Type Providers</h3>
-<ul>
-<li>Databases (ORMS, querys, sprocs)</li>
-<li>Regular Expressions</li>
-<li>AWS S3 / Azure storage</li>
-<li>WMI</li>
-<li>OData</li>
-<li>Hadoop</li>
-<li>Slack</li>
-<li><a href="http://bluemountaincapital.github.io/FSharpRProvider/">R</a></li>
-</ul>
 </section>
 <section >
 <h2>REPL</h2>
@@ -519,24 +315,7 @@ Functional
 </section>
 </section>
 <section >
-<section >
-<h2>Applying FP outside of FP</h2>
-<p>Applying functional thinkings to other languages</p>
-</section>
-<section >
 <h2>F# -&gt; C#</h2>
-<ul>
-<li>Generics</li>
-<li>Nullable types</li>
-<li>LINQ</li>
-<li>Async/Await</li>
-<li>Tuples</li>
-<li>Pattern matching</li>
-<li>Record types</li>
-<li>Union types</li>
-</ul>
-</section>
-<section >
 <ul>
 <li>C# with static functions and dtos</li>
 </ul>
@@ -557,7 +336,7 @@ Functional
 <td class="snippet"><pre class="fssnip highlighted"><code lang="csharp"><span class="k">public</span> <span class="k">class</span> Person
 {
     <span class="k">public</span> <span class="k">string</span> Email { get; set; }
-    <span class="k">public</span> <span class="k">string</span> Name {get; set; }
+    <span class="k">public</span> <span class="k">string</span> Name { get; set; }
 }
 
 <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> Emailer
@@ -570,24 +349,6 @@ Functional
 </code></pre></td></tr></table>
 </section>
 <section >
-<h2>Javascript</h2>
-<ul>
-<li><a href="http://elm-lang.org">Elm</a></li>
-<li><a href="http://fable.io">Fable</a></li>
-<li><a href="http://ramdajs.com">Ramda</a></li>
-<li><a href="http://www.purescript.org">Purescript</a></li>
-</ul>
-</section>
-</section>
-<section >
-<h2>Philosophy</h2>
-<ul>
-<li>Logic, Sets, Programming</li>
-<li>Category theory</li>
-<li>Discovered  -or- the way we think?</li>
-</ul>
-</section>
-<section >
 <section >
 <h2>Find out more</h2>
 <h3>F#</h3>
@@ -598,16 +359,6 @@ Functional
 <li><a href="https://channel9.msdn.com/events/Build/2017/T6064">https://channel9.msdn.com/events/Build/2017/T6064</a></li>
 <li><a href="https://github.com/ChrisMarinos/FSharpKoans/">F# koans</a></li>
 <li><a href="https://vimeo.com/131640714">Video: F# for C# developers</a></li>
-</ul>
-</section>
-<section >
-<h2>Find out more</h2>
-<h3>Functional Programming</h3>
-<ul>
-<li><a href="http://www.altdev.co/2012/04/26/functional-programming-in-c/">John Carmack</a></li>
-<li><a href="https://changelog.com/posts/rich-hickeys-greatest-hits">Rich Hickey</a></li>
-<li><a href="https://www.meetup.com/Exeter-Functional-Programmers/">Exeter FP Meetup</a></li>
-<li><a href="https://soundcloud.com/lambda-cast">Lambdacast podcast</a></li>
 </ul>
 </section>
 <section >
