@@ -6,27 +6,36 @@
 
 ***
 
+## Intro to fsharp
+
+- Who I am
+- Quick intro and some code
+- Slides and source code on Github
+- __Please__ ask questions
+
+---
+
+## Who I am
+
+- Developing for ~25 years
+- Mostly C# / Web / SQL
+- Some F#
+
+![](images/me.svg)
+
+---
+
 ## Why I learnt F#
 
 - Fun learning something new
 - Usable in my day to day job
 - Makes my C# coding better
 
----
-
-## How I got here
-
-![](images/me.svg)
-
 ***
 
-## F#
+## Code
 
-- ML (1974) / OCaml
-- Open source since 2005
-- Functional First but very pragmatic
-- Full interop with C#
-- Runs everywhere C# does + a few more
+Code here
 
 ---
 
@@ -92,10 +101,97 @@ Emailer.SendTestEmail( "dave@conceptfirst" "From Office365")
 
 ***
 
+## F#
+
+- ML (1974) / OCaml
+- Open source since 2005
+- Functional First but very pragmatic
+- Full interop with C#
+- Runs everywhere C# does + a few more
+- Test bed for C#
+
+---
+
+### Who uses it
+
+- Kaggle
+- Jet.com (3.3 billion)
+- The City (top 3 paid)
+- Microsoft internally
+
+---
+
+### Union types
+
+    type PaymentType =
+    | Cash
+    | Cheque
+    | CreditCard of Number:string * CCV:string
+    | Bitcoin of key:string
+
+    type CustomerID = CustomerID of int
+
+---
+
+### Record types
+
+    type Person = { Name: string }
+
+    { Name = "David" } = { Name = "David" }
+
+---
+
+### F# features
+
+    open System
+    let simpleValue = 5
+    let upper (s:string) = s.ToUpper()
+    let fact      x      = List.reduce (fun total v -> v * total ) [1..x]
+    let factorial x      = List.reduce (*) [1..x]
+    let factorialPipe x  = [1..x] |> List.reduce (*)
+    type Person = {
+        Name: string
+        Dob: DateTime option
+    }
+
+[F# cheatsheet](http://dungpa.github.io/fsharp-cheatsheet/)
+
+---
+
+## Different Defaults
+
+- Null vs no nulls
+- Mutable vs Immutable
+- Change properties vs Pipelines (e.g. Linq)
+- Reference vs Structual Equality
+
+---
+
+## Extras beyond C#
+
+- Agents
+- Type Providers
+- Monads e.g. async/await
+- Units of Measure
+
+
+    [<Measure>] type m
+    [<Measure>] type sec
+    [<Measure>] type kg
+
+    let distance = 1.0<m>
+    let time = 2.0<sec>
+    let speed = 2.0<m/sec>
+    let acceleration = 2.0<m/sec^2>
+    let force = 5.0<kg m/sec^2>
+    let travel = time * speed
+
+***
+
 ## Functional programming
 
 - _I have to think less, the compiler does more for me_
-- Think _SQL Select_
+- Seperate Data and Logic e.g. _SQL Select_
 
 ---
 
@@ -137,7 +233,7 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 
 ---
 
-## Advantages
+## FP Advantages
 
 - Manage complexity
 - Less stressful to code
@@ -148,7 +244,7 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 
 --- 
 
-## Disadvantages
+## FP Disadvantages
 
 - More abstract
 - Mathematical naming
@@ -156,29 +252,13 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 - More thinking, less typing, which is harder
 - Rabbit hole: Haskell, Dependant types, Category Theory
 
-***
-
-### Union types
-
-    type PaymentType =
-    | Cash
-    | Cheque
-    | CreditCard of Number:string * CCV:string
-    | Bitcoin of key:string
-
 ---
 
-### Record types
+## F# Disadvantages
 
-    type Person = { Name: string }
-
-    { Name = "David" } = { Name = "David" }
-
----
-
-## REPL
-
-- https://github.com/exeter-fp/poker-puzzle
+- Available developers
+- Size of community is smaller
+- VS tooling (but not VSCode)
 
 ***
 
@@ -200,7 +280,7 @@ _The problem with object-oriented languages is they’ve got all this implicit e
 ## Where NOT to use F#
 
 - Basic mvc
-- Xamarin
+- Xamarin (except Fabulous)
 
 ***
 
@@ -227,8 +307,6 @@ public static class Emailer
 *** 
 
 ## Find out more
-
-### F#
 
 - http://fsharpforfunandprofit.com
 - http://connelhooley.uk/blog/2017/04/10/f-sharp-guide
